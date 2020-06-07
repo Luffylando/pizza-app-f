@@ -8,6 +8,9 @@ const Profile = () => {
   const user = AuthService.getCurrentUser();
   const [userData, setUserData] = useState([]);
   useEffect(() => {
+    console.log("user", user);
+    console.log("userData", userData);
+
     if (user) {
       const fetchData = async () => {
         let result = await axios.get(`${backendApi}/api/auth/me`, {
@@ -22,6 +25,8 @@ const Profile = () => {
   }, []);
   return (
     <ProfileStyle>
+      {console.log("userData", userData)}
+      {console.log("user2", user)}
       Just some additional info about user...
       <div>
         <p>Name: {userData.name}</p>

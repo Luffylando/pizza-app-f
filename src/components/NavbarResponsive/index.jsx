@@ -12,6 +12,7 @@ import backendApi from "../../_config/backendApi";
 const NavbarResponsive = (props) => {
   const user = AuthService.getCurrentUser();
   const [userData, setUserData] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     getBasketNumbers();
@@ -27,11 +28,6 @@ const NavbarResponsive = (props) => {
       fetchData();
     }
   }, []);
-
-  function unCheck() {
-    var x = document.getElementsByClassName("toggler");
-    x.checked = false;
-  }
 
   const logOut = () => {
     AuthService.logout();
@@ -49,13 +45,13 @@ const NavbarResponsive = (props) => {
           </Link>
         </div>
         {/* <img className="icon" src="{{ URL::to('/images/logos/tet.png')}}" /> */}
-
         <input
           type="checkbox"
-          checked={true}
-          ref={"ref_"}
+          onChange={(event) => setIsChecked(event.currentTarget.checked)}
+          checked={isChecked}
           className="toggler"
         />
+
         <div className="hamburger">
           <div></div>
         </div>
@@ -64,15 +60,24 @@ const NavbarResponsive = (props) => {
             <div>
               <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" onClick={() => setIsChecked(!isChecked)}>
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/cart">Cart</Link>
+                  <Link to="/cart" onClick={() => setIsChecked(!isChecked)}>
+                    Cart
+                  </Link>
                 </li>
                 {user && userData.name ? (
                   <span className="custom-dropdown">
                     <li className="trigger">
-                      <Link to="/profile">Profile</Link>
+                      <Link
+                        to="/profile"
+                        onClick={() => setIsChecked(!isChecked)}
+                      >
+                        Profile
+                      </Link>
                     </li>
                   </span>
                 ) : null}
@@ -83,10 +88,18 @@ const NavbarResponsive = (props) => {
                     </Link>
                   ) : (
                     <>
-                      <Link to="/register" onClick={unCheck}>
+                      <Link
+                        to="/register"
+                        onClick={() => setIsChecked(!isChecked)}
+                      >
                         Register
                       </Link>
-                      <Link to="/login">Login</Link>
+                      <Link
+                        to="/login"
+                        onClick={() => setIsChecked(!isChecked)}
+                      >
+                        Login
+                      </Link>
                     </>
                   )}
                 </li>

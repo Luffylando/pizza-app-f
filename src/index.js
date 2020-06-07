@@ -18,17 +18,19 @@ import "react-notifications-component/dist/theme.css";
 import App from "./App.js";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <ReactNotification />
-      <Router history={history}>
-        <Navbar />
-        <NavbarResponsive />
-        <Main />
-        <Footer />
-      </Router>
-    </BrowserRouter>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <ReactNotification />
+        <Router history={history}>
+          <Navbar />
+          <NavbarResponsive />
+          <Main />
+          <Footer />
+        </Router>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
