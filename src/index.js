@@ -25,7 +25,7 @@ ReactDOM.render(
         <Navbar />
         <NavbarResponsive />
         <Main />
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </BrowserRouter>
   </Provider>,
