@@ -10,29 +10,25 @@ import { Provider } from "react-redux";
 import store from "./store";
 import Navbar from "./components/Navbar";
 import NavbarResponsive from "./components/NavbarResponsive";
-
 import Footer from "./components/Footer";
 import ReactNotification from "react-notifications-component";
 import "animate.css-react";
 import "animate.css";
-
 import "react-notifications-component/dist/theme.css";
 import App from "./App.js";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <ReactNotification />
-        <Router history={history}>
-          <Navbar />
-          <NavbarResponsive />
-          <Main />
-          {/* <Footer /> */}
-        </Router>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <ReactNotification />
+      <Router history={history}>
+        <Navbar />
+        <NavbarResponsive />
+        <Main />
+        {/* <Footer /> */}
+      </Router>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );
 
