@@ -61,7 +61,7 @@ const Navbar = (props) => {
         </div>
         <div className="sign-up">
           {user ? (
-            <Link to="#" onClick={logOut}>
+            <Link to="/" onClick={logOut}>
               Logout
             </Link>
           ) : (

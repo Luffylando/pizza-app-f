@@ -54,33 +54,21 @@ const NavbarResponsive = (props) => {
             <div>
               <ul>
                 <li>
-                  <Link to="/" onClick={() => (window.location.href = "/")}>
-                    Home
-                  </Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link
-                    to="/cart"
-                    onClick={() => (window.location.href = "/cart")}
-                  >
-                    Cart
-                  </Link>
+                  <Link to="/cart">Cart</Link>
                 </li>
                 {user && userData.name ? (
                   <span className="custom-dropdown">
                     <li className="trigger">
-                      <Link
-                        to="/profile"
-                        onClick={() => (window.location.href = "/profile")}
-                      >
-                        Profile
-                      </Link>
+                      <Link to="/profile">Profile</Link>
                     </li>
                   </span>
                 ) : null}
                 <li className="sign-up">
                   {user ? (
-                    <Link to="#" onClick={logOut}>
+                    <Link to="/" onClick={logOut}>
                       Logout
                     </Link>
                   ) : (
@@ -105,29 +93,6 @@ const NavbarResponsive = (props) => {
           </div>
         </div>
       </div>
-      {/* <div className="cart-container">
-        {user && userData.name ? (
-          <div className="name-log">Hi, {userData.name}</div>
-        ) : null}
-        <div className="cart btn btn-primary">
-          <Link to="/cart">
-            <SVGInline svg={cart} />{" "}
-            <p>( {props.basketProps.basketNumbers} )</p>
-          </Link>
-        </div>
-        <div className="sign-up">
-          {user ? (
-            <Link to="#" onClick={logOut}>
-              Logout
-            </Link>
-          ) : (
-            <>
-              <Link to="/register">Register</Link>
-              <Link to="/login">Login</Link>
-            </>
-          )}
-        </div>
-      </div> */}
     </NavbarResponsiveStyle>
   );
 };
