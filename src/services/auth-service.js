@@ -19,7 +19,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
-    window.location.href = `${backendApi}`;
+    window.location.href = `/`;
   }
 
   me() {

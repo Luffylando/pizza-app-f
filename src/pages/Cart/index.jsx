@@ -73,7 +73,7 @@ const Cart = ({ basketProps, addToBasket, removeFromBasket, cartCost }) => {
           },
         });
         setTimeout(() => {
-          window.location.href = `${backendApi}`;
+          window.location.href = `/`;
         }, 3000);
       } catch (error) {
         console.log("error", error);

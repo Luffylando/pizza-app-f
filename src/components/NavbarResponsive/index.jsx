@@ -28,6 +28,11 @@ const NavbarResponsive = (props) => {
     }
   }, []);
 
+  function unCheck() {
+    var x = document.getElementsByClassName("toggler");
+    x.checked = false;
+  }
+
   const logOut = () => {
     AuthService.logout();
   };
@@ -45,7 +50,12 @@ const NavbarResponsive = (props) => {
         </div>
         {/* <img className="icon" src="{{ URL::to('/images/logos/tet.png')}}" /> */}
 
-        <input type="checkbox" className="toggler" />
+        <input
+          type="checkbox"
+          checked={true}
+          ref={"ref_"}
+          className="toggler"
+        />
         <div className="hamburger">
           <div></div>
         </div>
@@ -73,18 +83,10 @@ const NavbarResponsive = (props) => {
                     </Link>
                   ) : (
                     <>
-                      <Link
-                        to="/register"
-                        onClick={() => (window.location.href = "/register")}
-                      >
+                      <Link to="/register" onClick={unCheck}>
                         Register
                       </Link>
-                      <Link
-                        to="/login"
-                        onClick={() => (window.location.href = "/login")}
-                      >
-                        Login
-                      </Link>
+                      <Link to="/login">Login</Link>
                     </>
                   )}
                 </li>
