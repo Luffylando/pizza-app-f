@@ -1,9 +1,10 @@
 import axios from "axios";
+import backendApi from "../_config/backendApi";
 
 class AuthService {
   login(email, password) {
     return axios
-      .post("http://localhost:8000/api/auth/login", {
+      .post(`${backendApi}/api/auth/login`, {
         email,
         password,
       })
@@ -18,13 +19,13 @@ class AuthService {
 
   logout() {
     localStorage.removeItem("user");
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = `${backendApi}`;
   }
 
   me() {
     let auth = this.getCurrentUser();
     let token = auth.access_token;
-    return axios.get("http://localhost:8000/api/auth/me", {
+    return axios.get(`${backendApi}/api/auth/me`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -32,7 +33,7 @@ class AuthService {
   }
 
   register(name, email, password) {
-    return axios.post("http://localhost:8000/api/auth/register", {
+    return axios.post(`${backendApi}/api/auth/register`, {
       name,
       email,
       password,

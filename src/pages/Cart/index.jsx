@@ -9,23 +9,12 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { store } from "react-notifications-component";
 import AuthService from "../../services/auth-service";
+import backendApi from "../../_config/backendApi";
 
 const Cart = ({ basketProps, addToBasket, removeFromBasket, cartCost }) => {
   let productsInCart = [];
 
   const [message, setMessage] = useState("");
-
-  // function refreshMessage(message) {
-  //   console.log("message", message);
-  //   if (message !== "") {
-  //     setTimeout(() => {
-  //       setMessage("");
-  //     }, 8000);
-  //   }
-  // }
-  // useEffect(() => {
-  //   refreshMessage();
-  // }, []);
 
   Object.keys(basketProps.products).forEach(function (item) {
     if (basketProps.products[item].inCart) {
@@ -38,7 +27,7 @@ const Cart = ({ basketProps, addToBasket, removeFromBasket, cartCost }) => {
   useEffect(() => {
     if (user) {
       const fetchData = async () => {
-        let result = await axios.get(`http://localhost:8000/api/auth/me`, {
+        let result = await axios.get(`${backendApi}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${user.access_token}`,
           },
@@ -60,7 +49,7 @@ const Cart = ({ basketProps, addToBasket, removeFromBasket, cartCost }) => {
     },
     onSubmit: (values) => {
       try {
-        axios.post("http://localhost:8000/api/orders", {
+        axios.post(`${backendApi}/api/orders`, {
           customer_name: values.name,
           customer_address: values.address,
           customer_phone: values.phone,
@@ -84,7 +73,7 @@ const Cart = ({ basketProps, addToBasket, removeFromBasket, cartCost }) => {
           },
         });
         setTimeout(() => {
-          window.location.href = "http://localhost:3000";
+          window.location.href = `${backendApi}`;
         }, 3000);
       } catch (error) {
         console.log("error", error);

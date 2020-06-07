@@ -7,6 +7,7 @@ import { Link, withRouter } from "react-router-dom";
 import { cart } from "../../assets/icons";
 import SVGInline from "react-svg-inline";
 import AuthService from "../../services/auth-service";
+import backendApi from "../../_config/backendApi";
 
 const Navbar = (props) => {
   const user = AuthService.getCurrentUser();
@@ -15,7 +16,7 @@ const Navbar = (props) => {
     getBasketNumbers();
     if (user) {
       const fetchData = async () => {
-        let result = await axios.get(`http://localhost:8000/api/auth/me`, {
+        let result = await axios.get(`${backendApi}/api/auth/me`, {
           headers: {
             Authorization: `Bearer ${user.access_token}`,
           },

@@ -6,13 +6,14 @@ import { cart } from "../../assets/icons";
 import { connect } from "react-redux";
 import { addToBasket } from "../../actions/addAction";
 import { store } from "react-notifications-component";
+import backendApi from "../../_config/backendApi";
 
 const Home = (props) => {
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      let result = await axios.get(`http://localhost:8000/api/pizzas`);
+      let result = await axios.get(`${backendApi}/api/pizzas`);
       setPizzas(result.data);
     };
     fetchData();
